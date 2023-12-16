@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PhisingTestPlatform.UI.Controllers
+namespace PhishingTestPlatform.UI.Controllers
 {
     public class EmailTemplatesController : Controller
     {

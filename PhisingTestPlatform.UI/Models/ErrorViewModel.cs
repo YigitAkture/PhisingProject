@@ -1,4 +1,4 @@
-namespace PhisingTestPlatform.UI.Models
+namespace PhishingTestPlatform.UI.Models
 {
     public class ErrorViewModel
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PhisingTestPlatform.UI.Controllers
+namespace PhishingTestPlatform.UI.Controllers
 {
-    public class SendPhisingEmailController : Controller
+    public class SendPhishingEmailController : Controller
     {
         public IActionResult Index()
         {

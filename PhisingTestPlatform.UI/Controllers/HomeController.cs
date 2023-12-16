@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PhisingTestPlatform.UI.Models;
+using PhishingTestPlatform.UI.Models;
 using System.Diagnostics;
 
-namespace PhisingTestPlatform.UI.Controllers
+namespace PhishingTestPlatform.UI.Controllers
 {
     public class HomeController : Controller
     {
