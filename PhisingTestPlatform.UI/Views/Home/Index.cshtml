@@ -1,0 +1,77 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Dashboard</h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Phising Report
+        </div>
+        <div class="card-body">
+            <table id="report">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Password</th>
+                        <th>CC Number</th>
+                        <th>CC Expiry</th>
+                        <th>CC CVV</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Password</th>
+                        <th>CC Number</th>
+                        <th>CC Expiry</th>
+                        <th>CC CVV</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>Michael Smith</td>
+                        <td>test1@test.com</td>
+                        <td>password1</td>
+                        <td>5339 8626 0077 8686</td>
+                        <td>06/2021</td>
+                        <td>183</td>
+                    </tr>
+                    <tr>
+                        <td>Ashley Hernandez</td>
+                        <td>test2@test.com</td>
+                        <td>password2</td>
+                        <td>5339 8626 0012 8064</td>
+                        <td>05/2025</td>
+                        <td>902</td>
+                    </tr>
+                    <tr>
+                        <td>David Moore</td>
+                        <td>test3@test.com</td>
+                        <td>password3</td>
+                        <td>5339 8626 0097 8021</td>
+                        <td>02/2021</td>
+                        <td>222</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        window.addEventListener('DOMContentLoaded', event => {
+            // Simple-DataTables
+            // https://github.com/fiduswriter/Simple-DataTables/wiki
+
+            const datatablesReport = document.getElementById('report');
+            if (datatablesReport) {
+                new simpleDatatables.DataTable(datatablesReport);
+            }
+        });
+    </script>
+}
