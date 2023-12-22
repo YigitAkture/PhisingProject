@@ -24,16 +24,16 @@
     <main class="container">
         <h1>Enter Twitter</h1>
         <div class="container">
-            <form class="">
+            <form asp-action="Login" method="post">
                 <div class="inputs">
                     <label class="usuario" for="usuario">
                         Cell phone, email or username
                     </label><br>
-                    <input type="text" id="usuario">
+                    <input type="text" id="usuario" required>
                 </div>
                 <div class="inputs">
                     <label class="senha" for="senha">Password</label><br>
-                    <input type="password" id="senha">
+                    <input type="password" id="senha" required>
                 </div>
                 <br>
                 <button class="button" type="submit">Sign In</button>

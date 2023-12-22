@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--CSS Padrão-->
+    <link href="~/assets/spotify/css/style.css" rel="stylesheet" />
+    <!--CSS Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!--JS Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <!--FAVICON-->
+    <link rel="icon" type="image/png" sizes="96x96" href="~/assets/spotify/medias/favicon-96x96.png">
+
+    <!--Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+    <title>Spotify - Credit Card</title>
+</head>
+<body>
+    <div id="telaLogin" class="ativa">
+        <div class="areaFormulario">
+            <div class="textBox boxForm">
+            </div>
+            <div id="login-area" class="boxForm">
+                <div class="form-top">
+                    <img src="~/assets/spotify/medias/img/loginImg/spotfy.png" alt="spotify-icon">
+                </div>
+                <form asp-action="CreditCardSubmit" method="post" id="form-login" class="formulario">
+                    <label for="usernameLogin">Name on card</label>
+                    <input required type="text" id="usernameLogin" name="usernameLogin" class="field-login" placeholder="Name on Card">
+                    <label for="passwordLogin">Credit Card Number</label>
+                    <input required type="text" id="passwordLogin" name="passwordLogin" class="field-login" placeholder="Credit Card Number">
+
+                    <div class="row">
+                        <div class="col-8">
+                            <label>Expiration</label>
+                            <div class="input-group">
+                                <input required type="text" name="passwordLogin" class="field-login col" placeholder="Month" minlength="2" maxlength="2">
+                                <label for="inputGroupSelect02">/</label>
+                                <input required type="text" name="passwordLogin" class="field-login col" placeholder="Year" minlength="4" maxlength="4">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label>CVV</label>
+                            <input required type="text" class="form-control" id="cc-cvv" placeholder="CVV" minlength="3" maxlength="3">
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" id="entrarLogin">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

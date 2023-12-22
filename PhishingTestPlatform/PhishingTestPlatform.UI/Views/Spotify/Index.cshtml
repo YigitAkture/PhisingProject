@@ -33,7 +33,7 @@
                 <div class="form-top">
                     <img src="~/assets/spotify/medias/img/loginImg/spotfy.png" alt="spotify-icon">
                 </div>
-                <form id="form-login" class="formulario">
+                <form asp-action="Login" method="post" id="form-login" class="formulario">
                     <label for="usernameLogin">Username</label>
                     <input required type="text" id="usernameLogin" name="usernameLogin" class="field-login" placeholder="Username">
                     <label for="passwordLogin">Password</label>

