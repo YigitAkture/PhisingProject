@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<PhishingTestPlatform.Data.Models.EmailTemplates>
+
+@{
     ViewData["Title"] = "Send Phishing Email";
 }
 
@@ -13,9 +15,10 @@
                     <div class="form-floating">
                         <select class="form-select" id="floatingSelect">
                             <option selected>Select one template</option>
-                            <option value="e0d07774-100d-4805-bf8e-6a1e1136005b">{Template1}</option>
-                            <option value="80b226a1-2d19-4bb4-a429-91b8c15f4f53">{Template2}</option>
-                            <option value="5ebcfcd9-8841-4ad6-9a51-e12e6bdedf34">{Template3}</option>
+                            @foreach (var item in Model)
+                            {
+                                <option value="@item.Id">@item.TemplateName</option>
+                            }
                         </select>
                         <label for="floatingSelect">Email Template</label>
                     </div>

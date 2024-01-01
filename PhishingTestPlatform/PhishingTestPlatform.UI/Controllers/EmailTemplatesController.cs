@@ -15,7 +15,7 @@ namespace PhishingTestPlatform.UI.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            return View(await _context.EmailTemplates.ToListAsync());
+            return View(await _context.EmailTemplates.OrderBy(x => x.TemplateName).ToListAsync());
         }
 
         public IActionResult Create()
@@ -36,7 +36,7 @@ namespace PhishingTestPlatform.UI.Controllers
                     TemplateBody = emailTemplates.TemplateBody
                 };
 
-                _context.Add(emailTemplate);
+                _context.EmailTemplates.Add(emailTemplate);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -69,11 +69,19 @@ namespace PhishingTestPlatform.UI.Controllers
                     TemplateBody = emailTemplates.TemplateBody
                 };
 
-                _context.Update(emailTemplate);
+                _context.EmailTemplates.Update(emailTemplate);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(emailTemplates);
+        }
+
+        public async Task<IActionResult> DeleteAsync(Guid id)
+        {
+            var emailTemplate = _context.EmailTemplates.FirstOrDefault(x => x.Id == id);
+            _context.EmailTemplates.Remove(emailTemplate);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
