@@ -17,4 +17,8 @@
     <ProjectReference Include="..\PhishingTestPlatform.Data\PhishingTestPlatform.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Models\" />
+  </ItemGroup>
+
 </Project>

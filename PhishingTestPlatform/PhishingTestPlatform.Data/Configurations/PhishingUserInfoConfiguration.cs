@@ -13,10 +13,10 @@ namespace PhishingTestPlatform.Data.Configurations
             builder.Property(x => x.LastName).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Email).IsRequired().HasMaxLength(100);
             builder.Property(x => x.Password).IsRequired();
-            builder.Property(x => x.CreditCardNumber).IsRequired().HasMaxLength(16);
-            builder.Property(x => x.CreditCardExpirationDateMonth).IsRequired().HasMaxLength(2);
-            builder.Property(x => x.CreditCardExpirationDateYear).IsRequired().HasMaxLength(4);
-            builder.Property(x => x.CreditCardCVV).IsRequired().HasMaxLength(3);
+            builder.Property(x => x.CreditCardNumber).HasMaxLength(16);
+            builder.Property(x => x.CreditCardExpirationDateMonth).HasMaxLength(2);
+            builder.Property(x => x.CreditCardExpirationDateYear).HasMaxLength(4);
+            builder.Property(x => x.CreditCardCVV).HasMaxLength(3);
 
             builder.HasOne(x => x.PhishingEmailSend)
                 .WithOne(x => x.PhishingUserInfo)

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model PhishingTestPlatform.UI.Models.EmailTemplates
+
+@{
     ViewData["Title"] = "Create New Template";
 }
 
@@ -14,30 +16,33 @@
         </div>
     </div>
     <div class="row">
-        <form>
+        <form asp-action="Create">
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input class="form-control" id="TemplateName" type="text" placeholder="Enter template name" />
-                        <label for="TemplateName">Template Name</label>
+                        <input class="form-control" asp-for="TemplateName" type="text" placeholder="Enter template name" />
+                        <label asp-for="TemplateName">Template Name</label>
+                        <span asp-validation-for="TemplateName" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <input class="form-control" id="EmailSubject" type="text" placeholder="Enter email subject" />
-                        <label for="EmailSubject">Email Subject</label>
+                        <input class="form-control" asp-for="TemplateSubject" type="text" placeholder="Enter email subject" />
+                        <label asp-for="TemplateSubject">Email Subject</label>
+                        <span asp-validation-for="TemplateSubject" class="text-danger"></span>
                     </div>
                 </div>
             </div>
             <div class="form-group mb-3">
-                <label class="form-label fw-bold" for="EmailBody">Email Body</label>
-                <textarea id="EmailBody"></textarea>
+                <label class="form-label fw-bold" asp-for="TemplateBody">Email Body</label>
+                <textarea asp-for="TemplateBody"></textarea>
+                <span asp-validation-for="TemplateBody" class="text-danger"></span>
             </div>
             <div class="mt-4 mb-0">
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-success btn-block" href="login.html">Create</button>
+                    <button type="submit" class="btn btn-success btn-block">Create</button>
                 </div>
             </div>
         </form>
@@ -45,18 +50,7 @@
 </div>
 
 @section Scripts {
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-            tinycomments_mode: 'embedded',
-            tinycomments_author: 'Author name',
-            mergetags_list: [
-                { value: 'First.Name', title: 'First Name' },
-                { value: 'Email', title: 'Email' },
-            ],
-            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-        });
-    </script>
+    @{
+        await Html.RenderPartialAsync("_TinyMCE");
+    }
 }

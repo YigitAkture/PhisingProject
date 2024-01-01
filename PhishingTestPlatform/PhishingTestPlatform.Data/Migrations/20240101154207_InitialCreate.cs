@@ -24,6 +24,19 @@ namespace PhishingTestPlatform.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PhishingEmailsSend",
                 columns: table => new
                 {
@@ -86,6 +99,9 @@ namespace PhishingTestPlatform.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "PhishingInfo");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "PhishingEmailsSend");

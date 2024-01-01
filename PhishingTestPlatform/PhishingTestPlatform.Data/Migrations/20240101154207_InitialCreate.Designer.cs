@@ -12,7 +12,7 @@ using PhishingTestPlatform.Data;
 namespace PhishingTestPlatform.Data.Migrations
 {
     [DbContext(typeof(PhishingDbContext))]
-    [Migration("20231216163858_InitialCreate")]
+    [Migration("20240101154207_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -128,6 +128,25 @@ namespace PhishingTestPlatform.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("PhishingInfo");
+                });
+
+            modelBuilder.Entity("PhishingTestPlatform.Data.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PhishingTestPlatform.Data.Models.PhishingEmailSend", b =>

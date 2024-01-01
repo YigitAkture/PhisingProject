@@ -128,6 +128,25 @@ namespace PhishingTestPlatform.Data.Migrations
                     b.ToTable("PhishingInfo");
                 });
 
+            modelBuilder.Entity("PhishingTestPlatform.Data.Models.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("PhishingTestPlatform.Data.Models.PhishingEmailSend", b =>
                 {
                     b.HasOne("PhishingTestPlatform.Data.Models.EmailTemplates", "EmailTemplates")

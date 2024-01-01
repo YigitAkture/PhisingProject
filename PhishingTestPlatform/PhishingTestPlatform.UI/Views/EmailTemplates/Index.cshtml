@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<PhishingTestPlatform.Data.Models.EmailTemplates>
+﻿
+@{
     ViewData["Title"] = "Email Templates";
 }
 
@@ -22,30 +24,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{TemplateName}</td>
-                    <td>
-                        <a class="btn btn-primary float-end" asp-area="" asp-controller="EmailTemplates" asp-action="Edit" asp-route-id="e0d07774-100d-4805-bf8e-6a1e1136005b">
-                            <i class="fas fa-pen"></i> Edit
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{TemplateName}</td>
-                    <td>
-                        <a class="btn btn-primary float-end" asp-area="" asp-controller="EmailTemplates" asp-action="Edit" asp-route-id="80b226a1-2d19-4bb4-a429-91b8c15f4f53">
-                            <i class="fas fa-pen"></i> Edit
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{TemplateName}</td>
-                    <td>
-                        <a class="btn btn-primary float-end" asp-area="" asp-controller="EmailTemplates" asp-action="Edit" asp-route-id="5ebcfcd9-8841-4ad6-9a51-e12e6bdedf34">
-                            <i class="fas fa-pen"></i> Edit
-                        </a>
-                    </td>
-                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.TemplateName</td>
+                        <td>
+                            <a class="btn btn-primary float-end" asp-area="" asp-controller="EmailTemplates" asp-action="Edit" asp-route-id="@item.Id">
+                                <i class="fas fa-pen"></i> Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
