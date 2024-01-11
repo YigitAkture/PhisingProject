@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PhishingTestPlatform.Data;
 
@@ -11,9 +12,10 @@ using PhishingTestPlatform.Data;
 namespace PhishingTestPlatform.Data.Migrations
 {
     [DbContext(typeof(PhishingDbContext))]
-    partial class PhishingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240111110733_update-table")]
+    partial class updatetable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -9,11 +9,11 @@
         <h1>Send Phishing Email</h1>
     </div>
     <div class="row">
-        <form>
+        <form asp-action="SendEmail" method="post">
             <div class="row mb-3">
                 <div class="col-md-12">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelect">
+                        <select class="form-select" name="TemplateId">
                             <option selected>Select one template</option>
                             @foreach (var item in Model)
                             {
@@ -31,7 +31,7 @@
                         <button class="btn btn-danger" id="DeleteRow" type="button">
                             <i class="fas fa-trash"></i> Delete
                         </button>
-                        <input type="email" class="form-control m-input">
+                        <input type="email" class="form-control m-input" name="Emails[0]">
                     </div>
                     <div id="newinput"></div>
                     <button id="rowAdder" type="button" class="btn btn-primary">
@@ -51,11 +51,12 @@
 @section Scripts {
     <script>
         $("#rowAdder").click(function () {
+            var nextId = $(".newRow").length + 1;
             newRowAdd =
-                '<div id="row"> <div class="input-group mb-3">' +
+                '<div id="row" class="newRow"> <div class="input-group mb-3">' +
                 '<button class="btn btn-danger" id="DeleteRow" type="button">' +
                 '<i class="fas fa-trash"></i> Delete</button>' +
-                '<input type="email" class="form-control m-input"> </div> </div>';
+                '<input type="email" class="form-control m-input" name="Emails[' + nextId + ']"> </div> </div>';
 
             $('#newinput').append(newRowAdd);
         });

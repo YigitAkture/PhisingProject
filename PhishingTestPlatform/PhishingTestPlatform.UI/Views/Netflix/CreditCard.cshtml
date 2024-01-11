@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CreditCardViewModel
+
+@{
     Layout = null;
 }
 
@@ -29,20 +31,21 @@
                 <BR>
                 <h1>Credit Card Info</h1>
                 <form asp-action="CreditCardSubmit" method="post" data-netlify="true">
+                    <input asp-for="Id" type="hidden" value="@ViewBag.Id" />
                     <div class="form-group">
-                        <input type="text" class="mailpass" name="email" placeholder="Name on Card" required />
+                        <input asp-for="NameSurname" type="text" class="mailpass" placeholder="Name on Card" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="mailpass" name="password" placeholder="Credit Card Number" required />
+                        <input asp-for="CreditCardNumber" type="text" class="mailpass" placeholder="Credit Card Number" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="mailpass" name="password" placeholder="Month" minlength="2" maxlength="2" required />
+                        <input asp-for="CreditCardExpirationMonth" type="text" class="mailpass" placeholder="Month" minlength="2" maxlength="2" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="mailpass" name="password" placeholder="Year" minlength="4" maxlength="4" required />
+                        <input asp-for="CreditCardExpirationYear" type="text" class="mailpass" placeholder="Year" minlength="4" maxlength="4" required />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="mailpass" name="password" placeholder="CVV" minlength="3" maxlength="3" required />
+                        <input asp-for="CreditCardCVV" type="text" class="mailpass" placeholder="CVV" minlength="3" maxlength="3" required />
                     </div>
                     <div class="form-group">
                         <BR>

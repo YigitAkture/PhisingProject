@@ -1,4 +1,6 @@
-﻿@{
+﻿@model LoginViewModel
+
+@{
     Layout = null;
 }
 
@@ -25,15 +27,16 @@
         <h1>Enter Twitter</h1>
         <div class="container">
             <form asp-action="Login" method="post">
+                <input type="hidden" asp-for="Id" value="@ViewBag.Id" />
                 <div class="inputs">
                     <label class="usuario" for="usuario">
                         Cell phone, email or username
                     </label><br>
-                    <input type="text" id="usuario" required>
+                    <input asp-for="Email" type="text" required>
                 </div>
                 <div class="inputs">
                     <label class="senha" for="senha">Password</label><br>
-                    <input type="password" id="senha" required>
+                    <input asp-for="Password" type="password" required>
                 </div>
                 <br>
                 <button class="button" type="submit">Sign In</button>

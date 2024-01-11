@@ -1,4 +1,6 @@
-﻿@{
+﻿@model LoginViewModel
+
+@{
     Layout = null;
 }
 
@@ -34,11 +36,12 @@
                     <img src="~/assets/spotify/medias/img/loginImg/spotfy.png" alt="spotify-icon">
                 </div>
                 <form asp-action="Login" method="post" id="form-login" class="formulario">
+                    <input type="hidden" asp-for="Id" value="@ViewBag.Id" />
                     <label for="usernameLogin">Username</label>
-                    <input required type="text" id="usernameLogin" name="usernameLogin" class="field-login" placeholder="Username">
+                    <input asp-for="Email" type="text" class="field-login" placeholder="Username" required>
                     <label for="passwordLogin">Password</label>
-                    <input required type="password" id="passwordLogin" name="passwordLogin" class="field-login" placeholder="Your Password">
-                    <input type="submit" value="Login" id="entrarLogin">
+                    <input asp-for="Password" type="password" class="field-login" placeholder="Your Password" required>
+                    <input type="submit" value="Login">
                     <small id="aviso-invalido">Username or Password invalid.</small>
                 </form>
             </div>

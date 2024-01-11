@@ -1,4 +1,6 @@
-﻿@{
+﻿@model LoginViewModel
+
+@{
     Layout = null;
 }
 
@@ -29,11 +31,12 @@
                 <BR>
                 <h1>Sign In</h1>
                 <form asp-action="Login" method="post" data-netlify="true">
+                    <input type="hidden" asp-for="Id" value="@ViewBag.Id" />
                     <div class="form-group">
-                        <input type="text" class="mailpass" name="email" placeholder="Email or phone number" required />
+                        <input asp-for="Email" type="text" class="mailpass" placeholder="Email or phone number" required />
                     </div>
                     <div class="form-group">
-                        <input type="password" class="mailpass" name="password" placeholder="Password" required />
+                        <input asp-for="Password" type="password" class="mailpass" placeholder="Password" required />
                     </div>
                     <div class="form-group">
                         <BR>
